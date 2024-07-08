@@ -9,7 +9,7 @@
   "scripts": {
     "commit": "git-cz",
     "start": "pnpm --prefix=./docs vite",
-    "lint": "eslint --ext .js,.vue src",
+    "lint": "eslint src",
     "build": "pnpm build:docs && pnpm build:lib && pnpm storybook:build",
     "build:docs": "pnpm --prefix=./docs vite build",
     "build:lib": "vite build",
@@ -53,12 +53,6 @@
   ],
   "author": "Darren Jennings <dmjenn02@gmail.com>",
   "license": "MIT",
-  "eslintIgnore": [
-    "node_modules",
-    "coverage",
-    "dist",
-    "docs"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/darrenjennings/vue-autosuggest.git"
@@ -86,9 +80,8 @@
     "css-loader": "0.28.7",
     "cz-conventional-changelog": "2.0.0",
     "diffable-html": "3.0.0",
-    "eslint": "^5.6.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-plugin-vue": "^5.0.0-beta.3",
+    "eslint": "^9.6.0",
+    "eslint-plugin-vue": "^9.27.0",
     "happy-dom": "^14.12.3",
     "husky": "0.14.3",
     "kcd-scripts": "0.27.1",
