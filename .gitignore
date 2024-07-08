@@ -2,6 +2,7 @@ node_modules
 coverage
 dist
 docs/build
+docs/storybook
 .opt-in
 .opt-out
 .DS_Store

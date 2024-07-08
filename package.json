@@ -22,8 +22,8 @@
     "add-contributor": "kcd-scripts contributors add",
     "setup": "pnpm install",
     "precommit": "exit 0 && pnpm test",
-    "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/public",
-    "storybook:build": "build-storybook -c .storybook -o docs/storybook"
+    "storybook": "storybook dev",
+    "storybook:build": "storybook build -o docs/storybook"
   },
   "files": [
     "dist",
@@ -70,8 +70,10 @@
     "vue": ">= 3.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.2.16",
-    "@storybook/vue": "3.2.15",
+    "@storybook/addon-actions": "^8.1.11",
+    "@storybook/test": "^8.1.11",
+    "@storybook/vue3": "^8.1.11",
+    "@storybook/vue3-vite": "^8.1.11",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/test-utils": "2.4.6",
     "codecov": "3.0.0",
@@ -87,8 +89,10 @@
     "kcd-scripts": "0.27.1",
     "prettier": "1.14.3",
     "sinon": "18.0.0",
+    "storybook": "^8.1.11",
     "vite": "^5.3.3",
     "vitest": "^1.6.0",
-    "vue": "^3.4.31"
+    "vue": "^3.4.31",
+    "vue-component-meta": "^2.0.26"
   }
 }
