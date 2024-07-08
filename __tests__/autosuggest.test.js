@@ -1,9 +1,10 @@
-import { mount, shallowMount } from "@vue/test-utils";
-import { createRenderer } from "vue-server-renderer";
+import { mount, shallowMount, renderToString } from "@vue/test-utils";
+import { vi } from 'vitest';
+import { h } from 'vue';
 
 import Autosuggest from "../src/Autosuggest.vue";
 
-Element.prototype.scrollTo = () => {}; // https://github.com/vuejs/vue-test-utils/issues/319
+//Element.prototype.scrollTo = () => {}; // https://github.com/vuejs/vue-test-utils/issues/319
 
 // Helper to call function x number of times
 const times = x => f => {
@@ -67,14 +68,13 @@ describe("Autosuggest", () => {
     props.suggestions = [filteredOptions[0]];
 
     const wrapper = shallowMount(Autosuggest, {
-      propsData: props
+      props: props
     });
 
     const input = wrapper.find('input[type="text"]')
     input.setValue('q')
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) throw new Error(err);
       expect(str).toMatchSnapshot();
     });
@@ -85,7 +85,7 @@ describe("Autosuggest", () => {
     props.inputProps = Object.assign({}, defaultProps.inputProps);
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       attachToDocument: true
     });
 
@@ -100,8 +100,7 @@ describe("Autosuggest", () => {
       defaultProps.sectionConfigs.default.limit
     );
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) throw new Error(err);
       expect(str).toMatchSnapshot();
     });
@@ -109,7 +108,7 @@ describe("Autosuggest", () => {
 
   it("can use escape key to exit", async () => {
     const wrapper = mount(Autosuggest, {
-      propsData: defaultProps,
+      props: defaultProps,
       listeners: defaultListeners
     });
 
@@ -144,8 +143,7 @@ describe("Autosuggest", () => {
     input.trigger("keydown.esc");
     expect(wrapper.findAll(`ul li`).length).toEqual(0);
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -155,7 +153,7 @@ describe("Autosuggest", () => {
 
   it("can select from suggestions using keystroke", async () => {
     const wrapper = mount(Autosuggest, {
-      propsData: defaultProps,
+      props: defaultProps,
       attachToDocument: true
     });
 
@@ -175,8 +173,7 @@ describe("Autosuggest", () => {
 
     await wrapper.vm.$nextTick(() => {});
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -195,7 +192,7 @@ describe("Autosuggest", () => {
           automatischsuchen: true
         }
       },
-      render(h) {
+      render() {
         return h(
           "div",
           [
@@ -250,7 +247,7 @@ describe("Autosuggest", () => {
     const props = Object.assign({}, defaultProps);
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       listeners: defaultListeners,
       attachToDocument: true
     });
@@ -265,8 +262,7 @@ describe("Autosuggest", () => {
 
     await wrapper.vm.$nextTick(() => {});
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -284,7 +280,7 @@ describe("Autosuggest", () => {
       }
     };
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       listeners: defaultListeners,
       attachToDocument: true
     });
@@ -297,8 +293,7 @@ describe("Autosuggest", () => {
     expect(wrapper.find("ul li:nth-child(1)").element.innerHTML).toBe(
       props.sectionConfigs.default.label
     );
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -358,8 +353,7 @@ describe("Autosuggest", () => {
     );
     expect(input.element.value).toBe(filteredOptions[0].data[mouseDownTimes - 1]);
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -380,7 +374,7 @@ describe("Autosuggest", () => {
     props.onSelected = () => {};
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       attachToDocument: true
     });
 
@@ -396,8 +390,7 @@ describe("Autosuggest", () => {
     wrapper.find("li").trigger("mouseenter");
     wrapper.find("li").trigger("mouseleave");
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -425,7 +418,7 @@ describe("Autosuggest", () => {
     props.onSelected = () => {};
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       attachToDocument: true
     });
 
@@ -440,8 +433,7 @@ describe("Autosuggest", () => {
 
     expect(input.element.value).toBe("Frodo");
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -454,7 +446,7 @@ describe("Autosuggest", () => {
     props.inputProps = { ...defaultProps.inputProps, name: "my-input" };
 
     const wrapper = mount(Autosuggest, {
-      propsData: props
+      props: props
     });
 
     const input = wrapper.find("input");
@@ -467,14 +459,14 @@ describe("Autosuggest", () => {
       inputProps: {...defaultProps.inputProps}
     };
 
-    const mockConsole = jest.fn();
+    const mockConsole = vi.fn();
     console.error = mockConsole;
 
     const blurred = () => {};
     props.inputProps.onBlur = blurred;
 
     const wrapper = mount(Autosuggest, {
-      propsData: props
+      props: props
     });
 
     const input = wrapper.find("input");
@@ -506,12 +498,10 @@ describe("Autosuggest", () => {
 
   it("can render slots", async () => {
     const wrapper = mount(Autosuggest, {
-      propsData: defaultProps,
+      props: defaultProps,
       slots: {
         'before-suggestions': '<div class="header-dude"></div>',
-        'after-suggestions': '<div id="footer-dude"><span>1</span><span>2</span></div>'
-      },
-      scopedSlots: {
+        'after-suggestions': '<div id="footer-dude"><span>1</span><span>2</span></div>',
         default: `
           <h1 slot-scope="{suggestion}">{{ suggestion.item }}</h1>
         `
@@ -529,8 +519,7 @@ describe("Autosuggest", () => {
 
     await wrapper.vm.$nextTick(() => {});
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -556,9 +545,9 @@ describe("Autosuggest", () => {
       },
     };
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       attachToDocument: true,
-      scopedSlots: {
+      slots: {
         'before-section-dogs': `<li :class="props.className">The Dogs</li>`,
         'before-section-cats': `<li>Moar Cats is good</li>`,
         'before-section-zeu': `<li>zoo animals?</li>`
@@ -573,8 +562,7 @@ describe("Autosuggest", () => {
     expect(wrapper.find("ul li:nth-child(1)").element.innerHTML).toBe(
       props.sectionConfigs.default.label
     );
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -584,7 +572,7 @@ describe("Autosuggest", () => {
 
   it("can customize ids and classes for container divs", async () => {
     const wrapper = mount(Autosuggest, {
-      propsData: {
+      props: {
         ...defaultProps,
         class: "containerz",
         'component-attr-id-autosuggest': "automatischsuchen",
@@ -603,8 +591,7 @@ describe("Autosuggest", () => {
     expect(wrapper.find('.resultz-containerz').is('div')).toBe(true);
     expect(wrapper.find(`#${defaultProps.inputProps.id}`).is('input')).toBe(true);
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -614,7 +601,7 @@ describe("Autosuggest", () => {
 
   it("can customize css prefix", async () => {
     const wrapper = mount(Autosuggest, {
-      propsData: {
+      props: {
         ...defaultProps,
         class: "containerz",
         'component-attr-prefix': 'v',
@@ -643,8 +630,7 @@ describe("Autosuggest", () => {
     expect(wrapper.find('#v__results-item--0').is('li')).toBeTruthy()
     expect(wrapper.find('.v__results-item').is('li')).toBeTruthy()
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -657,13 +643,13 @@ describe("Autosuggest", () => {
 
     delete props['sectionConfigs']
 
-    const mockFn = jest.fn();
-    const mockConsole = jest.fn();
+    const mockFn = vi.fn();
+    const mockConsole = vi.fn();
 
     console.warn = mockConsole;
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       listeners: {
         click: e => {
           mockFn(e);
@@ -689,9 +675,8 @@ describe("Autosuggest", () => {
     expect(mockConsole).toHaveBeenCalledTimes(0);
     expect(mockFn).toHaveBeenCalledTimes(2);
 
-    const renderer = createRenderer();
 
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -704,18 +689,18 @@ describe("Autosuggest", () => {
 
     delete props['sectionConfigs']
 
-    const AEL = jest.fn();
-    const REL = jest.fn();
+    const AEL = vi.fn();
+    const REL = vi.fn();
 
     window.document.addEventListener = AEL
     window.document.removeEventListener = REL
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       attachToDocument: true
     });
 
-    wrapper.destroy()
+    wrapper.unmount()
     expect(AEL).toHaveBeenCalledTimes(2)
     expect(REL).toHaveBeenCalledTimes(2)
   });
@@ -730,15 +715,14 @@ describe("Autosuggest", () => {
     props.suggestions = [filteredOptions[0]];
 
     const wrapper = shallowMount(Autosuggest, {
-      propsData: props
+      props: props
     });
 
     const input = wrapper.find('input[type="search"]')
-    expect(input.is('input')).toBe(true)
+    expect(input.exists()).toBe(true)
     expect(input.attributes("type", 'search')).toBeTruthy();
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) throw new Error(err);
       expect(str).toMatchSnapshot();
     });
@@ -772,11 +756,10 @@ describe("Autosuggest", () => {
     const props = {...defaultProps, suggestions: [{ data: null }]};
 
     const wrapper = shallowMount(Autosuggest, {
-      propsData: props
+      props: props
     });
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) throw new Error(err);
       expect(str).toMatchSnapshot();
     });
@@ -787,7 +770,7 @@ describe("Autosuggest", () => {
     props.inputProps = { ...defaultProps.inputProps };
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       attachToDocument: true
     });
 
@@ -806,8 +789,7 @@ describe("Autosuggest", () => {
     expect(item.attributes('data-suggestion-index')).toBe('0')
     expect(input.attributes('aria-activedescendant')).toBe('autosuggest__results-item--0')
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -821,7 +803,7 @@ describe("Autosuggest", () => {
     props.sectionConfigs.default.ulClass = { 'hello-ul': true }
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
       listeners: defaultListeners,
       attachToDocument: true
     });
@@ -838,8 +820,7 @@ describe("Autosuggest", () => {
     expect(ul.classes()).toContain('hello-ul');
     expect(li.classes()).toContain('hello-li');
 
-    const renderer = createRenderer();
-    renderer.renderToString(wrapper.vm, (err, str) => {
+    renderToString(wrapper.vm, (err, str) => {
       if (err) {
         return false;
       }
@@ -852,7 +833,7 @@ describe("Autosuggest", () => {
     props.inputProps = { ...defaultProps.inputProps };
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
     });
 
     const input = wrapper.find("input");
@@ -872,7 +853,7 @@ describe("Autosuggest", () => {
     props.inputProps = { ...defaultProps.inputProps };
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
     });
 
     const input = wrapper.find("input");
@@ -910,7 +891,7 @@ describe("Autosuggest", () => {
     props.inputProps = { ...defaultProps.inputProps };
 
     const wrapper = mount(Autosuggest, {
-      propsData: props,
+      props: props,
     });
 
     const input = wrapper.find("input");

@@ -14,7 +14,7 @@
     "build:docs": "pnpm --prefix=./docs vite build",
     "build:lib": "vite build",
     "deploy": "pnpm build && npm publish",
-    "test": "pnpm jest",
+    "test": "pnpm vitest",
     "test-compat": "./__tests__/test-compat-all.sh",
     "report-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
     "test:coverage": "pnpm jest -- --coverage",
@@ -88,35 +88,14 @@
     "diffable-html": "3.0.0",
     "eslint": "^5.6.0",
     "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^2.1.1",
     "eslint-plugin-vue": "^5.0.0-beta.3",
+    "happy-dom": "^14.12.3",
     "husky": "0.14.3",
-    "jest": "23.6.0",
-    "jest-serializer-vue": "^3.1.0",
     "kcd-scripts": "0.27.1",
     "prettier": "1.14.3",
-    "sinon": "4.1.2",
+    "sinon": "18.0.0",
     "vite": "^5.3.3",
-    "vue": "^3.4.31",
-    "vue-jest": "3.0.7"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    },
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.{vue}",
-      "!**/node_modules/**",
-      "!**/.test.js"
-    ],
-    "testURL": "http://localhost"
+    "vitest": "^1.6.0",
+    "vue": "^3.4.31"
   }
 }

@@ -19,5 +19,9 @@ export default defineConfig({
       external: ["vue"]
     }
   },
-  plugins: [vue({})]
+  plugins: [vue({})],
+  test: {
+    globals: true,
+    environment: 'happy-dom'
+  },
 });
