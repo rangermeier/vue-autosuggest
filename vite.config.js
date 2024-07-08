@@ -6,13 +6,15 @@ export default defineConfig({
     lib: {
       entry: "src/vue-autosuggest.js",
       name: "VueAutosuggest",
-      fileName: format => (format === "umd" ? "vue-autosuggest.js" : "vue-autosuggest.esm.js"),
-      formats: ["umd", "es"]
+      fileName: "vue-autosuggest",
     },
     rollupOptions: {
       output: {
         exports: "named",
-        name: "VueAutosuggest"
+        name: "VueAutosuggest",
+        globals: {
+          vue: 'Vue',
+        },
       },
       external: ["vue"]
     }

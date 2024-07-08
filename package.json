@@ -8,22 +8,20 @@
   },
   "scripts": {
     "commit": "git-cz",
-    "dev": "vite",
-    "start": "webpack-dev-server --config docs/webpack.config.js",
+    "start": "pnpm --prefix=./docs vite",
     "lint": "eslint --ext .js,.vue src",
-    "build": "pnpm run build:docs && pnpm run build:esm && pnpm run build:umd && pnpm run storybook:build",
-    "build:docs": "NODE_ENV=production webpack --config docs/webpack.config.js",
-    "build:esm": "rollup -c ./build/rollup.esm.config.js",
-    "build:umd": "rollup -c ./build/rollup.umd.config.js",
-    "deploy": "pnpm run build && npm publish",
-    "test": "pnpm run jest",
+    "build": "pnpm build:docs && pnpm build:lib && pnpm storybook:build",
+    "build:docs": "pnpm --prefix=./docs vite build",
+    "build:lib": "vite build",
+    "deploy": "pnpm build && npm publish",
+    "test": "pnpm jest",
     "test-compat": "./__tests__/test-compat-all.sh",
     "report-coverage": "cat ./coverage/lcov.info | ./node_modules/.bin/codecov",
-    "test:coverage": "pnpm run jest -- --coverage",
-    "test:update": "pnpm run test --updateSnapshot",
+    "test:coverage": "pnpm jest -- --coverage",
+    "test:update": "pnpm test --updateSnapshot",
     "add-contributor": "kcd-scripts contributors add",
-    "setup": "pnpm run install",
-    "precommit": "exit 0 && pnpm run test",
+    "setup": "pnpm install",
+    "precommit": "exit 0 && pnpm test",
     "storybook": "start-storybook -p 9001 -c .storybook -s ./.storybook/public",
     "storybook:build": "build-storybook -c .storybook -o docs/storybook"
   },
@@ -31,8 +29,14 @@
     "dist",
     "src"
   ],
-  "main": "dist/vue-autosuggest.js",
-  "module": "dist/vue-autosuggest.esm.js",
+  "main": "./dist/vue-autosuggest.umd.js",
+  "module": "./dist/vue-autosuggest.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-autosuggest.mjs",
+      "require": "./dist/vue-autosuggest.umd.js"
+    }
+  },
   "keywords": [
     "vue",
     "autosuggest",
@@ -74,17 +78,8 @@
   "devDependencies": {
     "@storybook/addon-actions": "^3.2.16",
     "@storybook/vue": "3.2.15",
-    "@vitejs/plugin-vue": "^1.10.1",
-    "@vue/test-utils": "1.0.0-beta.25",
-    "babel-core": "6.26.0",
-    "babel-eslint": "^8.0.2",
-    "babel-jest": "22.4.0",
-    "babel-loader": "7.1.2",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-plugin-transform-vue-jsx": "^3.5.0",
-    "babel-preset-env": "1.6.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/test-utils": "2.4.6",
     "codecov": "3.0.0",
     "codecov.io": "0.1.6",
     "commitizen": "2.9.6",
@@ -97,13 +92,13 @@
     "eslint-plugin-vue": "^5.0.0-beta.3",
     "husky": "0.14.3",
     "jest": "23.6.0",
-    "jest-serializer-vue": "^2.0.2",
+    "jest-serializer-vue": "^3.1.0",
     "kcd-scripts": "0.27.1",
     "prettier": "1.14.3",
     "sinon": "4.1.2",
-    "vite": "^2.6.14",
-    "vue": "^3.2.23",
-    "vue-jest": "2.6.0"
+    "vite": "^5.3.3",
+    "vue": "^3.4.31",
+    "vue-jest": "3.0.7"
   },
   "jest": {
     "moduleFileExtensions": [
