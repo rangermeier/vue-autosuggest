@@ -1,22 +1,28 @@
 <template>
-  <div :id="componentAttrIdAutosuggest" :class="$props.class" :style="$props.style">
+  <div
+    :id="componentAttrIdAutosuggest"
+    :class="$props.class"
+    :style="$props.style"
+  >
     <slot name="before-input" /><div
       role="combobox"
       :aria-expanded="isOpen ? 'true' : 'false'"
       aria-haspopup="listbox"
       :aria-owns="`${componentAttrIdAutosuggest}-${componentAttrPrefix}__results`"
-    ><input
-      :type="internal_inputProps.type"
-      :value="internalValue"
-      :autocomplete="internal_inputProps.autocomplete"
-      :class="[isOpen ? `${componentAttrPrefix}__input--open` : '', internal_inputProps['class']]"
-      v-bind="internal_inputProps"
-      aria-autocomplete="list"
-      :aria-activedescendant="isOpen && currentIndex !== null ? `${componentAttrPrefix}__results-item--${currentIndex}` : ''"
-      :aria-controls="`${componentAttrIdAutosuggest}-${componentAttrPrefix}__results`"
-      @input="inputHandler"
-      @keydown="handleKeyStroke"
-    ></div><slot name="after-input" />
+    >
+      <input
+        :type="internal_inputProps.type"
+        :value="internalValue"
+        :autocomplete="internal_inputProps.autocomplete"
+        :class="[isOpen ? `${componentAttrPrefix}__input--open` : '', internal_inputProps['class']]"
+        v-bind="internal_inputProps"
+        aria-autocomplete="list"
+        :aria-activedescendant="isOpen && currentIndex !== null ? `${componentAttrPrefix}__results-item--${currentIndex}` : ''"
+        :aria-controls="`${componentAttrIdAutosuggest}-${componentAttrPrefix}__results`"
+        @input="inputHandler"
+        @keydown="handleKeyStroke"
+      >
+    </div><slot name="after-input" />
     <div
       :id="`${componentAttrIdAutosuggest}-${componentAttrPrefix}__results`"
       :class="_componentAttrClassAutosuggestResultsContainer"
@@ -38,18 +44,18 @@
           :section="cs"
           :component-attr-prefix="componentAttrPrefix"
           :component-attr-id-autosuggest="componentAttrIdAutosuggest"
-          @updateCurrentIndex="updateCurrentIndex"
+          @update-current-index="updateCurrentIndex"
         >
           <template
-            v-slot:[beforeSlot(cs)]="{section, className}"
+            #[beforeSlot(cs)]="{section, className}"
           >
             <slot
               :name="beforeSlot(cs)"
               :section="section"
-              :className="className"
+              :class-name="className"
             />
           </template>
-          <template v-slot="{ suggestion, _key }">
+          <template #default="{ suggestion, _key }">
             <slot
               :suggestion="suggestion"
               :index="_key"
@@ -58,14 +64,14 @@
             </slot>
           </template>
           <template 
-            v-slot:[afterSlot(cs)]="{section}"
+            #[afterSlot(cs)]="{section}"
           >
             <slot
               :name="`after-section-${cs.name || cs.label}`"
               :section="section"
             />
           </template>
-          <template v-slot:after-section="{section}">
+          <template #after-section="{section}">
             <slot
               name="after-section"
               :section="section"
@@ -113,9 +119,9 @@ const defaultSectionConfig = {
 }
 
 export default {
-  name: "Autosuggest",
+  name: "VueAutosuggest",
   components: {
-    /* eslint-disable-next-line vue/no-unused-components */
+     
     DefaultSection
   },
   inheritAttrs: false,
@@ -200,11 +206,8 @@ export default {
       required: false,
       default: "autosuggest"
     },
-
-    // do not fallthrough, class and style
-    class: null,
-    style: null
   },
+  emits: ['opened', 'closed', 'input', 'selected', 'item-changed', 'update:modelValue'],
   data() {
     return {
       internalValue: null,
@@ -246,7 +249,7 @@ export default {
          * Wrap native click handler to allow for added behavior
          */
         onClick: () => {
-          /* eslint-disable-next-line vue/no-side-effects-in-computed-properties */
+           
           this.loading = false;
           this.$attrs.click && this.$attrs.click(this.currentItem);
           this.$nextTick(() => {

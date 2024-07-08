@@ -1,12 +1,12 @@
 import { h, defineComponent, Fragment  } from 'vue'
 
 const DefaultSection = defineComponent({
-  name: "default-section",
+  name: "DefaultSection",
   props: {
     /** @type ResultSection */
     section: { type: Object, required: true },
     currentIndex: { type: [Number, String], required: false, default: Infinity },
-    renderSuggestion: { type: Function, required: false },
+    renderSuggestion: { type: Function, required: false, default: null },
     normalizeItemFunction: { type: Function, required: true },
     componentAttrPrefix: { type: String, required: true },
     componentAttrIdAutosuggest: { type: String, required: true }
@@ -14,7 +14,7 @@ const DefaultSection = defineComponent({
   data: function () {
     return {
       /** @type Number */
-      _currentIndex: this.currentIndex
+      internalCurrentIndex: this.currentIndex
     }
   },
   computed: {
@@ -38,14 +38,14 @@ const DefaultSection = defineComponent({
     },
     onMouseEnter (event) {
       const idx = parseInt(event.currentTarget.getAttribute("data-suggestion-index"))
-      this._currentIndex = idx
+      this.internalCurrentIndex = idx
       this.$emit('updateCurrentIndex', idx)
     },
     onMouseLeave () {
       this.$emit('updateCurrentIndex', null)
     }
   },
-  // eslint-disable-next-line no-unused-vars
+   
   render () {
     const componentAttrPrefix = this.componentAttrPrefix
     const slots = {
@@ -77,7 +77,7 @@ const DefaultSection = defineComponent({
         this.list.map((val, key) => {
           const item = this.normalizeItemFunction(this.section.name, this.section.type, this.section.label, this.section.liClass, val)
           const itemIndex = this.getItemIndex(key)
-          const isHighlighted = this._currentIndex === itemIndex || parseInt(this.currentIndex) === itemIndex
+          const isHighlighted = this.internalCurrentIndex === itemIndex || parseInt(this.currentIndex) === itemIndex
 
           return h(
             "li",

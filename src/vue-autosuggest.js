@@ -3,8 +3,8 @@ import DefaultSection from "./parts/DefaultSection.js";
 
 const VueAutosuggestPlugin = {
   install(Vue) {
-    Vue.component("vue-autosuggest-default-section", DefaultSection);
-    Vue.component("vue-autosuggest", VueAutosuggest);
+    Vue.component("VueAutosuggestDefaultSection", DefaultSection);
+    Vue.component("VueAutosuggest", VueAutosuggest);
   }
 };
 
