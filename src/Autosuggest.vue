@@ -424,9 +424,10 @@ export default {
           index >= this.computedSections[i].start_index &&
           index <= this.computedSections[i].end_index
         ) {
-          let trueIndex = index - this.computedSections[i].start_index;
+          const trueIndex = index - this.computedSections[i].start_index;
           const sectionName = this.computedSections[i].name
-          let childSection = this.$refs[this.getSectionRef(`${sectionName}${i}`)];
+          const childSections = this.$refs[this.getSectionRef(`${sectionName}${i}`)];
+          const childSection = childSections ? childSections[0] : null;
           if (childSection) {
             obj = this.normalizeItem(
               this.computedSections[i].name,
