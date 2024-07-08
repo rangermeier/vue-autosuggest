@@ -105,7 +105,7 @@ Place the component into your app!
     @selected="selectHandler"
     @click="clickHandler"
 >  
-  <template slot-scope="{suggestion}">
+  <template #default="{suggestion}">
     <span class="my-suggestion-item">{{suggestion.item}}</span>
   </template>
 </vue-autosuggest>
@@ -132,7 +132,7 @@ Advanced usage:
         @selected="onSelected"
         :get-suggestion-value="getSuggestionValue"
         :input-props="{id:'autosuggest__input', placeholder:'Do you feel lucky, punk?'}">
-        <div slot-scope="{suggestion}" style="display: flex; align-items: center;">
+        <div #default="{suggestion}" style="display: flex; align-items: center;">
           <img :style="{ display: 'flex', width: '25px', height: '25px', borderRadius: '15px', marginRight: '10px'}" :src="suggestion.item.avatar" />
           <div style="{ display: 'flex', color: 'navyblue'}">{{suggestion.item.name}}</div>
         </div>
@@ -252,13 +252,13 @@ Slots for injecting content around the results/input. Useful for header/footer l
 
 ```html
 <vue-autosuggest ...>
-  <template slot="before-input"> content before the <input /> goes here </template>
-  <template slot="after-input"> content after the <input /> goes here </template>
-  <template slot="before-suggestions"> content before the <ul> goes here </template>
-  <template slot="before-section-<section.name e.g. 'default'>"> section header content for specific section goes here </template>
-  <template slot="after-section-<section.name e.g. 'default'>"> footer content goes here for specific section. </template>
-  <template slot="after-section"> Default footer content for all sections </template>
-  <template slot="after-suggestions"> content after the <ul> goes here </template>
+  <template #before-input> content before the <input /> goes here </template>
+  <template #after-input> content after the <input /> goes here </template>
+  <template #before-suggestions> content before the <ul> goes here </template>
+  <template #before-section-<section.name e.g. 'default'>> section header content for specific section goes here </template>
+  <template #after-section-<section.name e.g. 'default'>> footer content goes here for specific section. </template>
+  <template #after-section> Default footer content for all sections </template>
+  <template #after-suggestions> content after the <ul> goes here </template>
 </vue-autosuggest>
 ```
 
@@ -269,7 +269,7 @@ It is common in forms to add a label next to the `<input />` tag for semantic ht
 
 ```html
 <vue-autosuggest ...>
-  <template slot="before-input">
+  <template #before-input>
     <label :for="inputProps.id">Search here:</label>
   </template>
   ...
@@ -277,13 +277,13 @@ It is common in forms to add a label next to the `<input />` tag for semantic ht
 ```
 
 ### suggestion item (i.e. default slot)
-Used to style each suggestion inside the `<li>` tag. Using [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots) 
+Used to style each suggestion inside the `<li>` tag. Using [scoped slots](https://vuejs.org/guide/components/slots.html#scoped-slots) 
 you have access to the `suggestion` item inside the `v-for` suggestions loop. This gives you the power of Vue templating, since 
 vue-autosuggest does not have an opinion about how you render the items in your list.
 
 ```vue
 <vue-autosuggest>
-  <template slot-scope="{suggestion}">
+  <template #default="{suggestion}">
     <!-- suggestion.name corresponds to which section the item is in -->
     <div v-if="suggestion.name === 'blog'">
       <!-- suggestion.item corresponds to the suggestion object -->

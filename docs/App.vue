@@ -10,21 +10,20 @@
         @highlighted="(...args) => logEvent('highlighted', args)"
         @selected="onSelected"
         :suggestions="filteredOptions"
-        :render-suggestion="(suggestion) => suggestion.item.Name"
         :input-props="inputProps"
         :section-configs="sectionConfigs"
         :getSuggestionValue="getSuggestionValue"
         :should-render-suggestions="(size, loading) => size >= 0 && !loading && searchText !== ''"
         ref="autocomplete"
       >
-        <template slot="before-input">
+        <template #before-input>
           <label :for="inputProps.id">Select a LOTR Character</label>
         </template>
-        <!-- <template slot-scope="{suggestion, index, cs}">
+        <template #default="{suggestion, index, cs}">
           <div>{{ suggestion && suggestion.item.Name }}</div>
           <span />
-        </template> -->
-        <template slot="after-suggestions">
+        </template>
+        <template #after-suggestions>
           <p v-if="filteredOptions == 0" style="text-align: center;">No Results... Try <a style="color: peachpuff;" :href="`https://www.google.com/search?safe=active&source=hp&ei=t_M-Xci6EYq6tgXrzbLoCw&q=${searchText}`" @mouseup.stop target="_blank">googling</a></p>
         </template>
       </vue-autosuggest>
