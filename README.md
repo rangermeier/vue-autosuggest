@@ -70,7 +70,7 @@ npm install vue-autosuggest
 or
 
 ```
-yarn add vue-autosuggest
+pnpm add vue-autosuggest
 ```
 
 ## Usage
