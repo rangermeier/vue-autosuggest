@@ -10,6 +10,7 @@
     "commit": "git-cz",
     "start": "pnpm --prefix=./docs vite",
     "lint": "eslint src",
+    "prepare": "pnpm build:lib",
     "build": "pnpm build:docs && pnpm build:lib && pnpm storybook:build",
     "build:docs": "pnpm --prefix=./docs vite build",
     "build:lib": "vite build",
