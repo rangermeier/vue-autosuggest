@@ -206,6 +206,18 @@ export default {
       required: false,
       default: "autosuggest"
     },
+
+    // explicitely add `class` and `style` props because inheritAttrs is false
+    class: {
+      type: [String, Array, Object],
+      required: false,
+      default: "",
+    },
+    style: {
+      type:  [String, Array, Object],
+      required: false,
+      default: "",
+    }
   },
   emits: ['opened', 'closed', 'input', 'selected', 'item-changed', 'update:modelValue'],
   data() {
@@ -358,7 +370,7 @@ export default {
     /**
      * Support initialValue
      */
-    value: {
+    modelValue: {
       handler(newValue){
         this.internalValue = newValue
       },
