@@ -650,6 +650,8 @@ describe("Autosuggest", () => {
     expect(focusSpy).toHaveBeenCalledTimes(1);
     expect(inputSpy).toHaveBeenCalledTimes(1);
     expect(blurSpy).toHaveBeenCalledTimes(1);
+
+    expect(wrapper.emitted()).toHaveProperty('input')
   })
 
   it("tears down event listeners", async () => {

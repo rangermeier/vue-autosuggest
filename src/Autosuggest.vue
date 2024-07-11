@@ -361,12 +361,13 @@ export default {
       return `before-section-${cs.name || cs.label}`
     },
     /**
-     * handler for @input <input /> events to support v-model behavior.
+     * handler for @input <input /> events to support both v-model behavior and @input event listeners.
      * @param {InputEvent} e
      */
     inputHandler(e) {
       const newValue = e.target.value
       this.$emit('update:modelValue', newValue)
+      this.$emit('input', newValue)
       this.internalValue = newValue
       if (!this.didSelectFromOptions) {
         this.searchInputOriginal = newValue;
@@ -377,7 +378,6 @@ export default {
      * Wrap native click handler to allow for added behavior
      */
     onClick(){
-        
       this.loading = false;
       this.$attrs.click && this.$attrs.click(this.currentItem);
       this.$nextTick(() => {
@@ -515,6 +515,7 @@ export default {
             this.loading = true;
             this.currentIndex = null;
             this.internalValue = this.searchInputOriginal;
+            this.$emit('update:modelValue', this.searchInputOriginal);
             this.$emit('input', this.searchInputOriginal);
             e.preventDefault();
             break;
