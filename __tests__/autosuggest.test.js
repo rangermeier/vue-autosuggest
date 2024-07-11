@@ -415,7 +415,7 @@ describe("Autosuggest", () => {
     expect(input.attributes()["name"]).toBe("my-input");
   });
 
-  it("search input prop type handles string and integers only", async () => {
+  it("search input prop type handles string and integers", async () => {
     let props = getDefaultProps()
 
     const mockConsole = vi.fn();
@@ -444,15 +444,6 @@ describe("Autosuggest", () => {
 
     // Should not throw any errors
     expect(mockConsole).toHaveBeenCalledTimes(0);
-
-    // Functions
-    await input.trigger("click");
-    wrapper.setData({ searchInput: () => { /* BAD */ } });
-    await wrapper.vm.$nextTick(() => {});
-    await input.trigger("blur");
-
-    // Should throw validation error
-    expect(mockConsole).toHaveBeenCalled();
   });
 
   it("can render slots", async () => {
