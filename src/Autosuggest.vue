@@ -181,11 +181,6 @@ export default {
         };
       }
     },
-    onSelected: {
-      type: Function,
-      required: false,
-      default: null
-    },
     componentAttrIdAutosuggest: {
       type: String,
       required: false,
@@ -284,8 +279,7 @@ export default {
             );
           } else if (this.sectionConfigs["default"].onSelected) {
             this.sectionConfigs["default"].onSelected(null, this.searchInputOriginal);
-          } else if (this.onSelected) {
-            // NOTE `this.onSelected` and `this.$emit('selected', ...)` are equivalent in vue3
+          } else {
             this.$emit('selected', this.currentItem, this.currentIndex);
           }
           this.setChangeItem(null)
