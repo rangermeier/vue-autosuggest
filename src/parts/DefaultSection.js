@@ -60,7 +60,15 @@ const DefaultSection = defineComponent({
       className: beforeClassName
     })
     // Skip fragments without children, this can be for example `<slot>` or empty `<template>`
-    .filter(x=>x.type !== Fragment && x.children.length === 0) || []
+    .filter(x=>x.type === Fragment && x.children.length > 0) || []
+    
+    const beforeSectionFragment = 
+      before.length > 0 ? before[0]
+      : this.section.label ? h('li', {
+          class: beforeClassName,
+          id: `${this.componentAttrIdAutosuggest}-${this.section.label}`
+        }, [this.section.label])
+      : ''
 
     return h(
       "ul",
@@ -70,10 +78,7 @@ const DefaultSection = defineComponent({
         "aria-labelledby": this.section.label && `${this.componentAttrIdAutosuggest}-${this.section.label}`
       },
       [
-        before[0] && before[0] || this.section.label && h('li', {
-          class: beforeClassName,
-          id: `${this.componentAttrIdAutosuggest}-${this.section.label}`
-        }, [this.section.label]) || '',
+        beforeSectionFragment,
         this.list.map((val, key) => {
           const item = this.normalizeItemFunction(this.section.name, this.section.type, this.section.label, this.section.liClass, val)
           const itemIndex = this.getItemIndex(key)

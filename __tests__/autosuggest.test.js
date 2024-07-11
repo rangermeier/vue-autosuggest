@@ -488,6 +488,8 @@ describe("Autosuggest", () => {
     props.suggestions.push({ name: 'zeu', data: ['elephant', 'lion']})
     props.suggestions.push({ name: 'Uhh', data: ['something', 'something2']})
 
+    const dogsLabel = "The Dogs"
+    const uhhLabel = 'uhh'
     props.sectionConfigs = {
       default: {
         label: "Suggestions",
@@ -495,14 +497,14 @@ describe("Autosuggest", () => {
         onSelected: () => {}
       },
       Uhh: {
-        label: "uhh"
+        label: uhhLabel
       },
     };
     const wrapper = mount(Autosuggest, {
       props: props,
       attachTo: document,
       slots: {
-        'before-section-dogs': `<li :class="className">The Dogs</li>`,
+        'before-section-dogs': `<li :class="className">${dogsLabel}</li>`,
         'before-section-cats': `<li>Moar Cats is good</li>`,
         'before-section-zeu': `<li>zoo animals?</li>`
       },
@@ -513,10 +515,20 @@ describe("Autosuggest", () => {
 
     await input.trigger("click");
     input.setValue("G");
-    expect(wrapper.find("ul:nth-child(1) li:nth-child(1)").text()).toBe(
-      props.sectionConfigs.default.label
-    );
-    expect(wrapper.find("ul:nth-child(2) li:nth-child(1)").text()).toBe("The Dogs");
+
+    const beforeDefaultSection = wrapper.find("ul:nth-child(1) li:nth-child(1)");
+    expect(beforeDefaultSection.text()).toBe(props.sectionConfigs.default.label);
+    expect(beforeDefaultSection.classes()).not.toContain('autosuggest__results-item');
+    expect(beforeDefaultSection.classes()).toContain('autosuggest__results-before--default');
+
+    const dogsBeforeSection = wrapper.find("ul:nth-child(2) li:nth-child(1)");
+    expect(dogsBeforeSection.text()).toBe(dogsLabel);
+    expect(dogsBeforeSection.classes()).not.toContain('autosuggest__results-item');
+    expect(dogsBeforeSection.classes()).toContain('autosuggest__results-before--dogs');
+
+    const uhhBeforeSection = wrapper.find("ul:last-child li:nth-child(1)");
+    expect(uhhBeforeSection.text()).toBe(uhhLabel);
+
     expect(wrapper.html()).toMatchSnapshot()
   });
 

@@ -89,73 +89,43 @@ exports[`Autosuggest > can render default suggestion value by property name 1`] 
 `;
 
 exports[`Autosuggest > can render section slots 1`] = `
-<div id="autosuggest">
-  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" id="autosuggest__input" placeholder="Type 'G'" value="G" class="autosuggest__input--open"></div>
+"<div id="autosuggest" class="" style="">
+  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open" value="G"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
-    <div aria-labelledby="autosuggest" class="autosuggest__results">
+    <div class="autosuggest__results" aria-labelledby="autosuggest">
       <ul role="listbox" aria-labelledby="autosuggest-Suggestions">
-        <li id="autosuggest-Suggestions" class="autosuggest__results-before autosuggest__results-before--default">Suggestions</li>
-        <li role="option" data-suggestion-index="0" data-section-name="default" id="autosuggest__results-item--0" class="autosuggest__results-item">
-          clifford kits
-        </li>
-        <li role="option" data-suggestion-index="1" data-section-name="default" id="autosuggest__results-item--1" class="autosuggest__results-item">
-          friendly chemistry
-        </li>
-        <li role="option" data-suggestion-index="2" data-section-name="default" id="autosuggest__results-item--2" class="autosuggest__results-item">
-          phonics
-        </li>
-        <li role="option" data-suggestion-index="3" data-section-name="default" id="autosuggest__results-item--3" class="autosuggest__results-item">
-          life of fred
-        </li>
-        <li role="option" data-suggestion-index="4" data-section-name="default" id="autosuggest__results-item--4" class="autosuggest__results-item">
-          life of fred math
-        </li>
+        <li class="autosuggest__results-before autosuggest__results-before--default" id="autosuggest-Suggestions">Suggestions</li>
+        <li role="option" data-suggestion-index="0" data-section-name="default" id="autosuggest__results-item--0" class="autosuggest__results-item">clifford kits</li>
+        <li role="option" data-suggestion-index="1" data-section-name="default" id="autosuggest__results-item--1" class="autosuggest__results-item">friendly chemistry</li>
+        <li role="option" data-suggestion-index="2" data-section-name="default" id="autosuggest__results-item--2" class="autosuggest__results-item">phonics</li>
+        <li role="option" data-suggestion-index="3" data-section-name="default" id="autosuggest__results-item--3" class="autosuggest__results-item">life of fred</li>
+        <li role="option" data-suggestion-index="4" data-section-name="default" id="autosuggest__results-item--4" class="autosuggest__results-item">life of fred math</li>
       </ul>
       <ul role="listbox">
         <li class="autosuggest__results-before autosuggest__results-before--dogs">The Dogs</li>
-        <li role="option" data-suggestion-index="5" data-section-name="dogs" id="autosuggest__results-item--5" class="autosuggest__results-item">
-          spike
-        </li>
-        <li role="option" data-suggestion-index="6" data-section-name="dogs" id="autosuggest__results-item--6" class="autosuggest__results-item">
-          bud
-        </li>
-        <li role="option" data-suggestion-index="7" data-section-name="dogs" id="autosuggest__results-item--7" class="autosuggest__results-item">
-          rover
-        </li>
+        <li role="option" data-suggestion-index="5" data-section-name="dogs" id="autosuggest__results-item--5" class="autosuggest__results-item">spike</li>
+        <li role="option" data-suggestion-index="6" data-section-name="dogs" id="autosuggest__results-item--6" class="autosuggest__results-item">bud</li>
+        <li role="option" data-suggestion-index="7" data-section-name="dogs" id="autosuggest__results-item--7" class="autosuggest__results-item">rover</li>
       </ul>
       <ul role="listbox">
         <li>Moar Cats is good</li>
-        <li role="option" data-suggestion-index="8" data-section-name="cats" id="autosuggest__results-item--8" class="autosuggest__results-item">
-          sassy
-        </li>
-        <li role="option" data-suggestion-index="9" data-section-name="cats" id="autosuggest__results-item--9" class="autosuggest__results-item">
-          tuesday
-        </li>
-        <li role="option" data-suggestion-index="10" data-section-name="cats" id="autosuggest__results-item--10" class="autosuggest__results-item">
-          church
-        </li>
+        <li role="option" data-suggestion-index="8" data-section-name="cats" id="autosuggest__results-item--8" class="autosuggest__results-item">sassy</li>
+        <li role="option" data-suggestion-index="9" data-section-name="cats" id="autosuggest__results-item--9" class="autosuggest__results-item">tuesday</li>
+        <li role="option" data-suggestion-index="10" data-section-name="cats" id="autosuggest__results-item--10" class="autosuggest__results-item">church</li>
       </ul>
       <ul role="listbox">
         <li>zoo animals?</li>
-        <li role="option" data-suggestion-index="11" data-section-name="zeu" id="autosuggest__results-item--11" class="autosuggest__results-item">
-          elephant
-        </li>
-        <li role="option" data-suggestion-index="12" data-section-name="zeu" id="autosuggest__results-item--12" class="autosuggest__results-item">
-          lion
-        </li>
+        <li role="option" data-suggestion-index="11" data-section-name="zeu" id="autosuggest__results-item--11" class="autosuggest__results-item">elephant</li>
+        <li role="option" data-suggestion-index="12" data-section-name="zeu" id="autosuggest__results-item--12" class="autosuggest__results-item">lion</li>
       </ul>
       <ul role="listbox" aria-labelledby="autosuggest-uhh">
-        <li id="autosuggest-uhh" class="autosuggest__results-before autosuggest__results-before--Uhh">uhh</li>
-        <li role="option" data-suggestion-index="13" data-section-name="Uhh" id="autosuggest__results-item--13" class="autosuggest__results-item">
-          something
-        </li>
-        <li role="option" data-suggestion-index="14" data-section-name="Uhh" id="autosuggest__results-item--14" class="autosuggest__results-item">
-          something2
-        </li>
+        <li class="autosuggest__results-before autosuggest__results-before--Uhh" id="autosuggest-uhh">uhh</li>
+        <li role="option" data-suggestion-index="13" data-section-name="Uhh" id="autosuggest__results-item--13" class="autosuggest__results-item">something</li>
+        <li role="option" data-suggestion-index="14" data-section-name="Uhh" id="autosuggest__results-item--14" class="autosuggest__results-item">something2</li>
       </ul>
     </div>
   </div>
-</div>
+</div>"
 `;
 
 exports[`Autosuggest > can render simplest component with single onSelected 1`] = `
