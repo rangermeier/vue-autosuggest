@@ -20,6 +20,7 @@
         :aria-activedescendant="isOpen && currentIndex !== null ? `${componentAttrPrefix}__results-item--${currentIndex}` : ''"
         :aria-controls="`${componentAttrIdAutosuggest}-${componentAttrPrefix}__results`"
         @input="inputHandler"
+        @click="onClick"
         @keydown="handleKeyStroke"
       >
     </div><slot name="after-input" />
@@ -241,50 +242,8 @@ export default {
       return {
         ...this.defaultInputProps,
         ...this.inputProps,
-        ...this.listeners
+        ...this.$attrs,
       }
-    },
-    listeners() {
-      // console.log({...this.$attrs})
-      return {
-        // ...this.$attrs,
-        onInput: e => {
-          // Don't do anything native here, since we have inputHandler
-          return
-        },
-        /**
-         * Wrap native click handler to allow for added behavior
-         */
-        onClick: () => {
-           
-          this.loading = false;
-          this.$attrs.click && this.$attrs.click(this.currentItem);
-          this.$nextTick(() => {
-            this.ensureItemVisible(this.currentItem, this.currentIndex);
-          })
-        },
-        onSelected: () => {
-          /**
-           * Determine which onSelected to fire. This can be either from inside
-           * a section's object, from the `@selected` event
-           */
-          if (
-            this.currentItem &&
-            this.sectionConfigs[this.currentItem.name] &&
-            this.sectionConfigs[this.currentItem.name].onSelected
-          ) {
-            this.sectionConfigs[this.currentItem.name].onSelected(
-              this.currentItem,
-              this.searchInputOriginal
-            );
-          } else if (this.sectionConfigs["default"].onSelected) {
-            this.sectionConfigs["default"].onSelected(null, this.searchInputOriginal);
-          } else {
-            this.$emit('selected', this.currentItem, this.currentIndex);
-          }
-          this.setChangeItem(null)
-        }
-      };
     },
     /**
      * @returns {Boolean}
@@ -415,6 +374,38 @@ export default {
       }
     },
     /**
+     * Wrap native click handler to allow for added behavior
+     */
+    onClick(){
+        
+      this.loading = false;
+      this.$attrs.click && this.$attrs.click(this.currentItem);
+      this.$nextTick(() => {
+        this.ensureItemVisible(this.currentItem, this.currentIndex);
+      })
+    },
+    onSelected() {
+      /**
+       * Determine which onSelected to fire. This can be either from inside
+       * a section's object, from the `@selected` event
+       */
+      if (
+        this.currentItem &&
+        this.sectionConfigs[this.currentItem.name] &&
+        this.sectionConfigs[this.currentItem.name].onSelected
+      ) {
+        this.sectionConfigs[this.currentItem.name].onSelected(
+          this.currentItem,
+          this.searchInputOriginal
+        );
+      } else if (this.sectionConfigs["default"].onSelected) {
+        this.sectionConfigs["default"].onSelected(null, this.searchInputOriginal);
+      } else {
+        this.$emit('selected', this.currentItem, this.currentIndex);
+      }
+      this.setChangeItem(null)
+    },
+    /**
      * Helper for making sure the sectionRef getter is consistent
      * @returns {String}
      */
@@ -514,7 +505,7 @@ export default {
             }
 
             this.loading = true;
-            this.listeners.onSelected(this.didSelectFromOptions);
+            this.onSelected(this.didSelectFromOptions);
             break;
           case 27: // Escape
             /**
@@ -659,7 +650,7 @@ export default {
       this.loading = true;
       this.didSelectFromOptions = true;
       this.setChangeItem(this.getItemByIndex(this.currentIndex), true);
-      this.listeners.onSelected(true);
+      this.onSelected(true);
     },
     /**
      * Sets the current index of the highlighted object, useful for aria

@@ -616,6 +616,42 @@ describe("Autosuggest", () => {
     expect(mockConsole).toHaveBeenCalledTimes(0);
   });
 
+  it("emits 'focus' and 'blur' events for the input field", async () => {
+
+    const focusSpy = vi.fn();
+    const inputSpy = vi.fn();
+    const blurSpy = vi.fn();
+    
+    const Parent = {
+      template: `<div>
+        <Autosuggest
+          :suggestions="[{data:['Frodo']}]"
+          :input-props="{id:'autosuggest'}"
+          @focus="onFocus"
+          @input="onInput"
+          @blur="onBlur"
+        />
+      </div>
+      `,
+      components: { Autosuggest },
+      methods: {
+        onFocus: focusSpy,
+        onInput: inputSpy,
+        onBlur: blurSpy,
+      }
+    }
+    const wrapper = mount(Parent);
+
+    const input = wrapper.find("input");
+    await input.trigger("focus");
+    await input.setValue("Fro");
+    await input.trigger("blur");
+
+    expect(focusSpy).toHaveBeenCalledTimes(1);
+    expect(inputSpy).toHaveBeenCalledTimes(1);
+    expect(blurSpy).toHaveBeenCalledTimes(1);
+  })
+
   it("tears down event listeners", async () => {
     let props = getDefaultProps()
     delete props['sectionConfigs']
