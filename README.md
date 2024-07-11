@@ -3,7 +3,7 @@
 
 <h1>vue-autosuggest</h1>
 
-<p>🔍 Autosuggest component built for Vue.</a></p>
+<p>🔍 Autosuggest component built for Vue 3.</a></p>
 </div>
 
 <hr />
@@ -30,6 +30,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Props](#props)
+* [Migration](#migration)
 * [Inspiration](#inspiration)
 * [Contributors](#contributors)
 * [LICENSE](#license)
@@ -101,7 +102,7 @@ Place the component into your app!
 <vue-autosuggest
     :suggestions="[{data:['Frodo', 'Samwise', 'Gandalf', 'Galadriel', 'Faramir', 'Éowyn']}]"
     :input-props="{id:'autosuggest__input', placeholder:'Do you feel lucky, punk?'}"
-    @input="onInputChange"
+    @update:modelValue="onInputChange"
     @selected="selectHandler"
     @click="clickHandler"
 >  
@@ -128,7 +129,7 @@ Advanced usage:
         :suggestions="filteredOptions"
         @focus="focusMe"
         @click="clickHandler"
-        @input="onInputChange"
+        @update:modelValue="onInputChange"
         @selected="onSelected"
         :get-suggestion-value="getSuggestionValue"
         :input-props="{id:'autosuggest__input', placeholder:'Do you feel lucky, punk?'}">
@@ -320,7 +321,7 @@ vue-autosuggest does not have an opinion about how you render the items in your 
 | Prop                     | Type                |  Required  | Description                                                                                                                                                                  |
 | :----------------------- | :------------------ | :--------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`id`](#inputPropsTable) | String              |     ✓      | id attribute on `<input>`.                                                                                                                                                   |
-| Any DOM Props            | \*                  |            | You can add any props to `<input>` as the component will `v-bind` inputProps. Similar to rest spread in JSX. See more details here: https://vuejs.org/v2/api/#v-bind. The `name` attribute is set to "`q`" by default.         |
+| Any DOM Props            | \*                  |            | You can add any props to `<input>` as the component will [`v-bind` inputProps](https://vuejs.org/api/built-in-directives.html#v-bind). The `name` attribute is set to "`q`" by default. |
 
 <a name="sectionConfigsProp"></a>
 
@@ -421,19 +422,21 @@ shouldRenderSuggestions (size, loading) {
 
 ## [Events](#events)
 
-Below are the list of supported events. `@` is short-hand for 
-[v-on](https://vuejs.org/v2/guide/events.html#Listening-to-Events).
+Below are the list of supported events.
 
 | Prop                              | Returns               | Description                                                                                                                                                                 |
 | :-------------------------------- | :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@selected`                       | suggestionItem, index | suggestion select handler. equivalent to sectionConfigs `on-selected` but for all items                                                                                     |
-| `@input`, `@focus`, `@blur`, etc. | \*                    | there is a transparent wrapper on the underlying `<input />` so vue-autosuggest will use any DOM event you pass it for listening. This is implemented using `v-on:<event>`. |
-| `@opened`, `@closed`              | \*                    | suggestions visibility handler, indicates when the suggestions are opened and closed. This is called alongside [shouldRenderSuggestions](#shouldRenderSuggestions).         |
-| `@item-changed`                   | suggestionItem, index | when keying through the results, this event signals which item is highlighted before being selected.                                                                        |
+| `@selected`                       | suggestionItem, index | Suggestion select handler. equivalent to sectionConfigs `on-selected` but for all items                                                                                     |
+| `@update:modelValue`              | \*                    | Changes to the value of the `<input />`. This is also driving the `v-model` prop                                                                                            |
+| `@focus`, `@blur`, etc.           | \*                    | There is a transparent wrapper on the underlying `<input />` so vue-autosuggest will use any DOM event you pass it for listening. This is implemented using `v-on:<event>`. |
+| `@opened`, `@closed`              | \*                    | Suggestions visibility handler, indicates when the suggestions are opened and closed. This is called alongside [shouldRenderSuggestions](#shouldRenderSuggestions).         |
+| `@item-changed`                   | suggestionItem, index | When keying through the results, this event signals which item is highlighted before being selected.                                                                        |
 
-## Browser support
 
-For IE11 and below, some functionality may not work. For example, you will have to manually [polyfill](https://github.com/Financial-Times/polyfill-service/issues/177) `Node.prototype.contains`
+## Migration
+
+See the [migration notes](migration) for changes between versions.
+
 
 ## Inspiration
 
@@ -475,6 +478,7 @@ MIT
 [prs]: http://makeapullrequest.com
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
 [coc]: https://github.com/darrenjennings/vue-autosuggest/blob/master/other/CODE_OF_CONDUCT.md
+[migration]: https://github.com/darrenjennings/vue-autosuggest/blob/master/other/MIGRATION.md
 [github-watch-badge]: https://img.shields.io/github/watchers/darrenjennings/vue-autosuggest.svg?style=social
 [github-watch]: https://github.com/darrenjennings/vue-autosuggest/watchers
 [github-star-badge]: https://img.shields.io/github/stars/darrenjennings/vue-autosuggest.svg?style=social
