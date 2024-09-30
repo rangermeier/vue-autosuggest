@@ -9,7 +9,6 @@
 <hr />
 
 [![Build Status][build-badge]][build]
-[![Code Coverage][coverage-badge]][coverage]
 [![version][version-badge]][package]
 [![downloads][downloads-badge]][npmtrends]
 [![MIT License][license-badge]][LICENSE]
@@ -466,8 +465,7 @@ MIT
 [build-badge]: https://img.shields.io/travis/darrenjennings/vue-autosuggest.svg?style=flat-square
 [build]: https://travis-ci.org/darrenjennings/vue-autosuggest
 [size-badge]: https://img.badgesize.io/https://unpkg.com/vue-autosuggest@latest/dist/vue-autosuggest.esm.js?compression=gzip&style=flat-square
-[coverage-badge]: https://img.shields.io/codecov/c/github/darrenjennings/vue-autosuggest.svg?style=flat-square
-[coverage]: https://codecov.io/github/darrenjennings/vue-autosuggest
+
 [version-badge]: https://img.shields.io/npm/v/vue-autosuggest.svg?style=flat-square
 [package]: https://www.npmjs.com/package/vue-autosuggest
 [downloads-badge]: https://img.shields.io/npm/dm/vue-autosuggest.svg?style=flat-square

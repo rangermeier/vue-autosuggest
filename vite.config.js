@@ -22,6 +22,10 @@ export default defineConfig({
   plugins: [vue({})],
   test: {
     globals: true,
-    environment: 'happy-dom'
+    environment: 'happy-dom',
+    coverage: {
+      include: ['src/**/*.js', 'src/**/*.vue'],
+      exclude: ['src/**/*.stories.js', 'src/stories/**'],
+    },
   },
 });
