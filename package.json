@@ -3,8 +3,8 @@
   "version": "2.2.0",
   "description": "Vue autosuggest component.",
   "engines": {
-    "node": "> 4",
-    "npm": "> 3"
+    "node": ">= 20",
+    "pnpm": ">= 9"
   },
   "scripts": {
     "commit": "git-cz",
@@ -16,8 +16,8 @@
     "build:lib": "vite build",
     "deploy": "pnpm build && npm publish",
     "test": "pnpm vitest",
-    "test-compat": "./__tests__/test-compat-all.sh",
-    "test:update": "pnpm test --updateSnapshot",
+    "test:compat": "./__tests__/test-compat-all.sh",
+    "test:update": "pnpm vitest --update",
     "add-contributor": "kcd-scripts contributors add",
     "setup": "pnpm install",
     "precommit": "exit 0 && pnpm test",
@@ -66,7 +66,7 @@
     }
   },
   "peerDependencies": {
-    "vue": ">= 3.0.0"
+    "vue": ">= 3.4.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^8.3.4",

@@ -2,7 +2,7 @@
 
 exports[`Autosuggest > can click outside document to trigger close 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="false"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" class="" value="G"></div>
+  <div role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" value="G"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <!--v-if-->
   </div>
@@ -11,7 +11,7 @@ exports[`Autosuggest > can click outside document to trigger close 1`] = `
 
 exports[`Autosuggest > can customize css prefix 1`] = `
 "<div id="the-whole-thing" class="containerz" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="the-whole-thing-v__results" aria-expanded="true"><input type="text" autocomplete="off" id="the-input-thing" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="the-whole-thing-v__results" class="v__input--open"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="the-whole-thing-v__results"><input type="text" autocomplete="off" class="v__input--open" id="the-input-thing" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="the-whole-thing-v__results"></div>
   <div id="the-whole-thing-v__results" class="the-results-container">
     <div class="the-results" aria-labelledby="the-whole-thing">
       <ul role="listbox">
@@ -28,7 +28,7 @@ exports[`Autosuggest > can customize css prefix 1`] = `
 
 exports[`Autosuggest > can customize ids and classes for container divs 1`] = `
 "<div id="automatischsuchen" class="containerz" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="automatischsuchen-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="automatischsuchen-autosuggest__results" class="autosuggest__input--open"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="automatischsuchen-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="automatischsuchen-autosuggest__results"></div>
   <div id="automatischsuchen-autosuggest__results" class="resultz-containerz">
     <div class="resultz" aria-labelledby="automatischsuchen">
       <ul role="listbox">
@@ -45,7 +45,7 @@ exports[`Autosuggest > can customize ids and classes for container divs 1`] = `
 
 exports[`Autosuggest > can display section header 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open" value="G"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" value="G"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <div class="autosuggest__results" aria-labelledby="autosuggest">
       <ul role="listbox" aria-labelledby="autosuggest-Suggestions">
@@ -81,7 +81,7 @@ exports[`Autosuggest > can mount 1`] = `
 
 exports[`Autosuggest > can render default suggestion value by property name 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="false"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-controls="autosuggest-autosuggest__results" class="cool-class" aria-activedescendant="" value="Frodo"></div>
+  <div role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="cool-class" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" value="Frodo"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <!--v-if-->
   </div>
@@ -90,7 +90,7 @@ exports[`Autosuggest > can render default suggestion value by property name 1`] 
 
 exports[`Autosuggest > can render section slots 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open" value="G"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" value="G"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <div class="autosuggest__results" aria-labelledby="autosuggest">
       <ul role="listbox" aria-labelledby="autosuggest-Suggestions">
@@ -130,7 +130,7 @@ exports[`Autosuggest > can render section slots 1`] = `
 
 exports[`Autosuggest > can render simplest component with single onSelected 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open cool-class cool-class" aria-activedescendant="autosuggest__results-item--2" value="phonics"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open cool-class cool-class" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="autosuggest__results-item--2" aria-controls="autosuggest-autosuggest__results" value="phonics"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <div class="autosuggest__results" aria-labelledby="autosuggest">
       <ul role="listbox">
@@ -162,7 +162,7 @@ exports[`Autosuggest > can render simplest component with single onSelected 1`] 
 
 exports[`Autosuggest > can render slots 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open" value="G"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" value="G"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <div class="autosuggest__results" aria-labelledby="autosuggest">
       <div class="header-dude"></div>
@@ -191,7 +191,7 @@ exports[`Autosuggest > can render slots 1`] = `
 
 exports[`Autosuggest > can render suggestions 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open" aria-activedescendant="autosuggest__results-item--0" value="clifford kits"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="autosuggest__results-item--0" aria-controls="autosuggest-autosuggest__results" value="clifford kits"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <div class="autosuggest__results" aria-labelledby="autosuggest">
       <ul role="listbox">
@@ -208,7 +208,7 @@ exports[`Autosuggest > can render suggestions 1`] = `
 
 exports[`Autosuggest > can select from suggestions using keystroke 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="false"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-controls="autosuggest-autosuggest__results" class="" aria-activedescendant="" value="G"></div>
+  <div role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" value="G"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <!--v-if-->
   </div>
@@ -217,7 +217,7 @@ exports[`Autosuggest > can select from suggestions using keystroke 1`] = `
 
 exports[`Autosuggest > can use escape key to exit 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="false"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-controls="autosuggest-autosuggest__results" class="" aria-activedescendant="" value="G"></div>
+  <div role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="" aria-controls="autosuggest-autosuggest__results" value="G"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <!--v-if-->
   </div>
@@ -226,7 +226,7 @@ exports[`Autosuggest > can use escape key to exit 1`] = `
 
 exports[`Autosuggest > highlights first option on keydown when previously closed 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open" aria-activedescendant="autosuggest__results-item--0" value="clifford kits"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="autosuggest__results-item--0" aria-controls="autosuggest-autosuggest__results" value="clifford kits"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <div class="autosuggest__results" aria-labelledby="autosuggest">
       <ul role="listbox">
@@ -243,7 +243,7 @@ exports[`Autosuggest > highlights first option on keydown when previously closed
 
 exports[`Autosuggest > is aria complete 1`] = `
 "<div id="autosuggest" class="" style="">
-  <div role="combobox" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results" aria-expanded="true"><input type="text" autocomplete="off" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-controls="autosuggest-autosuggest__results" class="autosuggest__input--open" aria-activedescendant="autosuggest__results-item--2" value="phonics"></div>
+  <div role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-owns="autosuggest-autosuggest__results"><input type="text" autocomplete="off" class="autosuggest__input--open" id="autosuggest__input" placeholder="Type 'G'" aria-autocomplete="list" aria-activedescendant="autosuggest__results-item--2" aria-controls="autosuggest-autosuggest__results" value="phonics"></div>
   <div id="autosuggest-autosuggest__results" class="autosuggest__results-container">
     <div class="autosuggest__results" aria-labelledby="autosuggest">
       <ul role="listbox" aria-labelledby="autosuggest-Suggestions">
