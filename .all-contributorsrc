@@ -1,9 +1,7 @@
 {
   "projectName": "vue-autosuggest",
   "projectOwner": "darrenjennings",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": false,
   "contributors": [
@@ -12,66 +10,52 @@
       "name": "Darren Jennings",
       "avatar_url": "https://avatars.githubusercontent.com/u/5770711?v=4",
       "profile": "https://darrenjennings.github.io",
-      "contributions": [
-        "code",
-        "doc",
-        "infra",
-        "test",
-        "design",
-        "example"
-      ]
+      "contributions": ["code", "doc", "infra", "test", "design", "example"]
     },
     {
       "login": "ekulish",
       "name": "Evgeniy Kulish",
       "avatar_url": "https://avatars2.githubusercontent.com/u/411772?v=4",
       "profile": "https://github.com/ekulish",
-      "contributions": [
-        "code",
-        "design",
-        "example",
-        "test"
-      ]
+      "contributions": ["code", "design", "example", "test"]
     },
     {
       "login": "scottadamsmith",
       "name": "Scott Smith",
       "avatar_url": "https://avatars3.githubusercontent.com/u/1824850?v=4",
       "profile": "https://github.com/scottadamsmith",
-      "contributions": [
-        "bug",
-        "code",
-        "test"
-      ]
+      "contributions": ["bug", "code", "test"]
     },
     {
       "login": "chuca",
       "name": "Fernando Machuca",
       "avatar_url": "https://avatars0.githubusercontent.com/u/864496?v=4",
       "profile": "https://github.com/chuca",
-      "contributions": [
-        "design"
-      ]
+      "contributions": ["design"]
     },
     {
       "login": "BerniML",
       "name": "BerniML",
       "avatar_url": "https://avatars1.githubusercontent.com/u/12657810?v=4",
       "profile": "https://github.com/BerniML",
-      "contributions": [
-        "code",
-        "test"
-      ]
+      "contributions": ["code", "test"]
     },
     {
       "login": "42tte",
       "name": "Kristoffer Nordström",
       "avatar_url": "https://avatars0.githubusercontent.com/u/8436510?v=4",
       "profile": "https://github.com/42tte",
-      "contributions": [
-        "code",
-        "test"
-      ]
+      "contributions": ["code", "test"]
+    },
+    {
+      "login": "rangermeier",
+      "name": "Rupert Angermeier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1318556?v=4",
+      "profile": "https://ngrmr.at/",
+      "contributions": ["code", "doc", "maintenance"]
     }
-  ]
+  ],
+  "repoType": "github",
+  "commitConvention": "angular"
 }
+
